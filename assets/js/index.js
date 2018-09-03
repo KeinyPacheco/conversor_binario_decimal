@@ -1,13 +1,13 @@
 /**
  * Eventos que se ejecutan al cargar el formulario 
  */
-window.onload = function() {
+ window.onload = function() {
 
     document.getElementById("required_decimal").style.display = "none";
 
     document.getElementById("required_binario").style.display = "none";
 
-	document.getElementById("btn_convertir_decimal").addEventListener("click", decimal_a_binario, false);
+    document.getElementById("btn_convertir_decimal").addEventListener("click", decimal_a_binario, false);
 
     document.getElementById("btn_convertir_binario").addEventListener("click", binario_a_decimal, false);
 };
@@ -17,7 +17,7 @@ window.onload = function() {
  * 
  * @return {string} Valor del check
  */
-function numero_bits(){
+ function numero_bits(){
     var binaryType = "8", checkBox = document.forms[0].elements["numeroBits"];
 
     for (let i = 0; i < checkBox.length; i++) {
@@ -28,51 +28,51 @@ function numero_bits(){
     }
     return binaryType;     
 }
- 
+
 
 /**
  * Esta función se encarga de convertir un decimal a binario. Al terminar, ejecuta el método que calcula los complementos
  * 
  * @return {void}
  */
-function decimal_a_binario(){
+ function decimal_a_binario(){
 
-	var decimal = document.getElementById("decimal").value,
-        binario = [],
-        i = 0,
-        signo = "0";
+   var decimal = document.getElementById("decimal").value,
+   binario = [],
+   i = 0,
+   signo = "0";
 
-    if(decimal.trim() == ""){
-        document.getElementById("required_decimal").style.display = "";
-    }else{
-        document.getElementById("required_decimal").style.display = "none";
-    }
+   if(decimal.trim() == ""){
+    document.getElementById("required_decimal").style.display = "";
+}else{
+    document.getElementById("required_decimal").style.display = "none";
+}
 
-    if(decimal < 0){
+if(decimal < 0){
         decimal = decimal * (-1); //Podemos usar también Math.abs(decimal)
         signo = "1";
     }
 
     while(decimal > 0)
-	{
+    {
         binario[i] = decimal%2;
         decimal = parseInt(decimal / 2);
         i++;		
-	}    	
+    }    	
 
-	var binarioFinal = "";
+    var binarioFinal = "";
     for (let j = i - 1; j >= 0; j--){ 
         binarioFinal += binario[j];
     } 
 
     var binaryType = numero_bits(), 
-        ceros = (Number(binaryType) - binarioFinal.length) - 1,
-        rellenoCeros = "";
+    ceros = (Number(binaryType) - binarioFinal.length) - 1,
+    rellenoCeros = "";
 
     for(let i = 0; i < ceros; i++){
         rellenoCeros += "0";
     }
- 
+    
     document.getElementById("magnitud").value = signo+""+rellenoCeros+""+binarioFinal;
     document.getElementById("magnitud").dataset.original = binarioFinal;
     encontrar_complementos();
@@ -82,12 +82,12 @@ function decimal_a_binario(){
  * Esta función se encarga de convertir un número binario a un número decimal  
  * @return {void}
  */
-function binario_a_decimal(){
+ function binario_a_decimal(){
     
     var binario = document.getElementById("binario").value,
-        array = [], 
-        decimal = 0, 
-        contador = 0;
+    array = [], 
+    decimal = 0, 
+    contador = 0;
 
     if(binario.trim() == ""){
         document.getElementById("required_binario").style.display = "";
@@ -107,7 +107,7 @@ function binario_a_decimal(){
     for(let a = 0; a < array.length; a++){
         decimal += array[a];
     }
-     
+    
     document.getElementById("respuesta_decimal").value = decimal;  
 } 
 
@@ -118,7 +118,7 @@ function binario_a_decimal(){
  * 
  * @return {string} Retorna el digito contrario
  */
-function cambiar_digito(digito){
+ function cambiar_digito(digito){
     return (digito == "1" ? "0" : "1");
 }
 
@@ -127,13 +127,13 @@ function cambiar_digito(digito){
  * 
  * @return {void}
  */
-function encontrar_complementos()
-{
+ function encontrar_complementos()
+ {
     var binary = document.getElementById("magnitud").dataset.original, 
-        totalDigitos = binary.length, 
-        complementoUno = [],
-        complementoDos = [], 
-        i, carry=1; 
+    totalDigitos = binary.length, 
+    complementoUno = [],
+    complementoDos = [], 
+    i, carry=1; 
 
     /* Buscamos el complemento 1 */
     for(i=0; i<totalDigitos; i++)
@@ -159,15 +159,15 @@ function encontrar_complementos()
     } 
 
     var binaryType = numero_bits(),
-        ceros = (Number(binaryType) - complementoUno.length),
-        rellenoComplementoUno = "", 
-        rellenoComplementoDos = "";
+    ceros = (Number(binaryType) - complementoUno.length),
+    rellenoComplementoUno = "", 
+    rellenoComplementoDos = "";
 
     complementoUno = complementoUno.join(''); 
     complementoDos = complementoDos.join('');
 
     var primerDigitoUno = complementoUno.substring(0, 1),
-        primerDigitoDos = complementoDos.substring(0, 1);
+    primerDigitoDos = complementoDos.substring(0, 1);
 
     for(let i = 0; i < ceros; i++){
         rellenoComplementoUno += cambiar_digito(primerDigitoUno); 
