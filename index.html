@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Conversor Binario-Decimal</title>
+	<meta name="author" content="Keiny Pacheco">
+	<meta name="description" content="Conversor de numeros binarios a decimal y viceversa">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link rel="stylesheet" href="assets/css/bulma.css">
+</head>
+<body>
+	<section class="hero is-danger">
+	  <div class="hero-body">
+	    <div class="container">
+	      <h1 class="title">
+	        Conversor Binario-Decimal
+	      </h1>
+	    </div>
+	  </div>
+	</section>	
+	<section class="section"> 
+		<div class="content">
+			<form>    
+		 		<div class="tile is-ancestor is-centered">
+					<div class="tile is-parent is-4"> 
+						<article class="tile is-child notification is-warning">
+							<p class="title">A binario</p> 
+							<div class="content">  
+								<div class="field">
+									<label class="label">Número Decimal</label>
+									<div class="control">
+										<input class="input" type="number" placeholder="Text input" id="decimal" required>
+									</div>
+									<p id="required_decimal" class="help is-danger">Ingrese el número decimal</p>
+								</div> 				
+								<div class="field">
+									<label class="label">Tipo de binario</label>
+									<div class="control">
+										<label class="radio">
+											<input type="radio" name="numeroBits" id="numeroBits" value="8"> 8  
+										</label>
+										<label class="radio">
+											<input type="radio" name="numeroBits" id="numeroBits" value="16"> 16 
+										</label>
+										<label class="radio">
+											<input type="radio" name="numeroBits" id="numeroBits" value="32"> 32
+										</label>							
+									</div>
+								</div>
+								<div class="field">
+									<div class="control">
+										<input type="button" class="button is-medium is-fullwidth is-danger" value="Convertir" id="btn_convertir_decimal">
+									</div> 
+								</div> 
+								<div class="field">
+									<label class="label">Signo Magnitud</label>
+									<div class="control">
+										<input class="input" id="magnitud" type="text">
+									</div>
+								</div>
+								<div class="field">
+									<label class="label">Complemento a 1</label>
+									<div class="control">
+										<input class="input" id="complem1" type="text">
+									</div>
+								</div>		
+								<div class="field">
+									<label class="label">Complemento a 2</label>
+									<div class="control">
+										<input class="input" id="complem2" type="text">
+									</div>
+								</div>																	
+							</div>
+						</article>    
+					</div>
+					<div class="tile is-parent is-4"> 
+						<article class="tile is-child notification is-warning">
+							<p class="title">A decimal</p> 
+							<div class="content">
+								<div class="field">
+									<label class="label">Número Binario</label>
+									<div class="control">
+										<input class="input" id="binario" type="text">
+									</div>
+									<p id="required_binario" class="help is-danger">Ingrese el número binario</p>
+								</div>
+								<div class="field">
+									<div class="control">
+										<input type="button" class="button is-medium is-fullwidth is-danger" value="Convertir" id="btn_convertir_binario">
+									</div> 
+								</div>
+								<div class="field">
+									<label class="label">Número Decimal</label>
+									<div class="control">
+										<input class="input" id="respuesta_decimal" type="text">
+									</div>
+								</div>															
+							</div>
+						</article>    
+					</div>  
+					<div class="tile is-parent is-3 is-child" > 
+						<article class="tile notification is-vertical is-success has-text-centered">
+							<p class="title">Info</p> 
+							<div class="content ">
+								<p>Este es un conversor hecho con javascript y html.</p>									
+							</div>
+						</article>    
+					</div>			
+				</div>  
+			</form>		   
+		</div>		
+	</section> 
+	<footer class="footer">
+		<div class="content has-text-centered ">
+			<p>Creado por Keiny Pacheco</p>
+		</div>
+	</footer>	 
+</body>
+<script type="text/javascript" src="assets/js/index.js"></script>
+</html>
